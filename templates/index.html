@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Classification</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div id = "overlay">
+        <div id="responseBox">
+            <div class = "resp" >Response</div>
+            <hr>
+            <div id = "responseMessage">Response</div>
+            <button id = "close_button">Close</button>
+        </div> <!-- Display API response message -->
+        
+    </div>
+    <header>
+        <div class="text-box">
+          <h1 id="title">WELCOME TO DIABETES CLASSIFIER</h1><hr>
+            <p id="description">Tell us about yourself</p>
+        </div>
+    </header>
+    <div class="container">
+        
+        <form id="survey-form" method="GET">
+            <div class="labels">
+                <label id="number-label" for="no_of_preg">Number of Pregnancies</label></div>
+            <div class="input-tab">
+                <input class="input-field" type="number" id="no_of_preg" name="no_of_preg" min="1" max="20" placeholder="0" required></div>
+            <div class="labels">
+                <label id="number-label" for="Glucose">Glucose Level</label></div>
+            <div class="input-tab">
+                <input class="input-field" type="number" id="Glucose" name="Glucose"  min="0" max="200" placeholder="0" required></div>
+            <div class="labels">
+                <label id="number-label" for="BloodPressure">Blood Pressure</label></div>
+            <div class="input-tab">
+                <input class="input-field" type="number" id="BloodPressure" name="BloodPressure" min="0" max="120" placeholder="0" required></div>
+            <div class="labels">
+                <label id="number-label" for="SkinThickness">Skin thickness</label></div>
+            <div class="input-tab">
+                <input class="input-field" type="number" id="SkinThickness" name="SkinThickness" min="0" max="120" placeholder="0" required></div>
+            <div class="labels">
+                <label id="number-label" for="Insulin">Insulin level</label></div>
+            <div class="input-tab">
+                <input class="input-field" type="number" id="Insulin" name="Insulin" min="0" max="800" placeholder="0" required></div>
+            <div class="labels">
+                <label id="number-label" for="BMI">BMI levels</label></div>
+            <div class="input-tab">
+                <input class="input-field" type="float" id="BMI" name="BMI" min="1" max="100" placeholder="0" required></div>
+            <div class="labels">
+                <label id="number-label" for="DiabetesPedigreeFunction">Diabetes Pedigree Function</label></div>
+            <div class="input-tab">
+                <input class="input-field" type="float" id="DiabetesPedigreeFunction" name="DiabetesPedigreeFunction" min="1.0" max="3.0" placeholder="0" required></div>
+            <div class="labels">
+                <label id="number-label" for="Age">Age</label></div>
+            <div class="input-tab">
+                <input class="input-field" type="float" id="Age" name="Age" min="1" max="120" placeholder="1" required></div>
+            <div class="labels">
+                <label for="comments">Tell us more about your favorite character(s) or episode(s)</label></div>
+            <div class="input-tab">
+                <textarea class="input-field" id="comments" name="comments" rows="10" cols="40" placeholder="Your comments..."></textarea></div>          
+            <div class="btn">
+                <button id="submit" type="submit">Submit</button>
+            </div>
+              
+        </form>
+    </div>
+      
+      <footer>
+        <div class="contact">
+          <a href="https://github.com/linh4" target="_blank">
+            <span class="icon"><i class="fa fa-github"></i></span></a>
+          <a href="https://codepen.io/linh4/" target="_blank">
+            <span class="icon"><i class="fa fa-codepen"></i></span></a>
+          <a href="https://www.freecodecamp.org/linh4" target="_blank">
+            <span class="icon"><i class="fa fa-free-code-camp"></i></span></a>
+        </div>
+            <p>&copy 2018 Linh Huynh</a></p>
+      </footer>
+      
+    <script type="module" src="static/js/script.js"></script>
+
+</body>
+</html>
