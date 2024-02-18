@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
             BloodPressure: BloodPressure,
             SkinThickness: SkinThickness,
             Insulin: Insulin,
-            Glucose: Glucose,
             BMI: BMI,
             DiabetesPedigreeFunction: DiabetesPedigreeFunction,
             Age: Age,
@@ -53,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     if(data.pred == "1")
                         responseMessage.innerHTML = `<p>You have Diabetes</p>`;
                     else
-                        responseMessage.innerHTML = `<p>You dont have Diabetes</p>`;
+                        responseMessage.innerHTML = `<p>You don't have Diabetes</p>`;
                 }
                 else {
                     responseMessage.innerHTML = `<p>${data.error}</p>`;
