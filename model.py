@@ -2,10 +2,6 @@ import joblib
 import pandas as pd
 
 path = "./models/filename.joblib"
-df_dir = "./data/diabetes.csv"
-
-df = pd.read_csv(df_dir)
-X = df.drop(['Outcome'], axis = 1)
 
 model = joblib.load(path) 
 
