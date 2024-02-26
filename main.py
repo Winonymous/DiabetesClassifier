@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, render_template
-from model import make_prediction
+import numpy as np
+from model import make_prediction, verify_input
 
 app = Flask(__name__)
 
@@ -13,28 +14,46 @@ def predict():
         # Get data from the POST rpyequest
         data = request.json
         print(data)
-        # # Make predictions using the loaded model
-        predictions = make_prediction(data['no_of_preg'], 
-                                      data['Glucose'], 
-                                      data['BloodPressure'], 
-                                      data["SkinThickness"],
-                                      data["Insulin"],
-                                      data["BMI"],
-                                      data["DiabetesPedigreeFunction"],
-                                      data["Age"]) 
 
-        # # Convert predictions to a JSON response
-        response = {
-            'Ok': "True",
-            'pred': str(predictions),
-            'error': ""}
+        verify = verify_input(data['no_of_preg'], 
+                              data['Glucose'], 
+                              data['BloodPressure'], 
+                              data["SkinThickness"],
+                              data["Insulin"],
+                              data["BMI"],
+                              data["DiabetesPedigreeFunction"],
+                              data["Age"])
+        if verify == "Okay":
+            # # Make predictions using the loaded model
+            predictions_proba = make_prediction(data['no_of_preg'], 
+                                        data['Glucose'], 
+                                        data['BloodPressure'], 
+                                        data["SkinThickness"],
+                                        data["Insulin"],
+                                        data["BMI"],
+                                        data["DiabetesPedigreeFunction"],
+                                        data["Age"]) 
+
+            # # Convert predictions to a JSON response
+            response = {
+                'Ok': "True",
+                'pred': str(predictions_proba.argmax()),
+                'proba': str(predictions_proba.max() * 100),
+                'error': ""}
+        else: 
+            response = {
+                'Ok': "True",
+                'pred': "",
+                'proba': "",
+                'error': verify}
 
         return jsonify(response)
     
     except Exception as e:
         return jsonify({'error': str(e),
                         'Ok': "False",
-                        'pred': ""})
+                        'pred': "",
+                        "proba": ""})
 
 if __name__ == '__main__':
     app.run(debug=True)
