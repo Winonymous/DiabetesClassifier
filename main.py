@@ -1,14 +1,19 @@
 from flask import Flask, jsonify, request, render_template
+from flask_cors import CORS, cross_origin
+
 import numpy as np
 from model import make_prediction, verify_input
 
 app = Flask(__name__)
+CORS(app)
+
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
+@cross_origin()
 def predict():
     try:
         # Get data from the POST rpyequest
